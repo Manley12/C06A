@@ -1,33 +1,36 @@
+/*
+ * 
+ * Setting ENUM 
+ *  
+ * @author Justin Orji
+ * @author Gregory Manley
+ * 
+ */
 public class Burner {
+	// Temperature ENUM
 	public enum Temperature{BLAZING, HOT, WARM, COLD};
 	
+	// Burner Constructor
 	public Burner() {
 		super();
+		// Set temperature to cold and setting to off to begin with
 		this.myTemperature = Temperature.COLD;
 		this.mySetting = Setting.OFF;
 	}
 	
+	// Setup variables for Burner
 	public final static int TIME_DURATION = 2;
 	private int timer = TIME_DURATION;
 	private Setting mySetting;
 	private Temperature myTemperature;
+	
+	// return the temperature when asked
 	public Temperature getMyTemperature() {
 		return myTemperature;
 	}
 	
-	
-	
 	public void plusButton() {
-		/*if (mySetting == Setting.OFF) {
-			mySetting = Setting.LOW;
-		} else if (mySetting == Setting.LOW) {
-			mySetting = Setting.MEDIUM;
-		} else if (mySetting == Setting.MEDIUM) {
-			mySetting = Setting.HIGH;
-		} else if (mySetting == Setting.HIGH) {
-			
-		}*/
-		
+		// Switch statement to increase temperature when the plus button is activated 
 		switch (mySetting) {
 			case OFF: mySetting = Setting.LOW;
 				break;
@@ -41,16 +44,7 @@ public class Burner {
 	}
 	
 	public void minusButton() {
-		/*if (mySetting == Setting.OFF) {
-	
-		} else if (mySetting == Setting.LOW) {
-			mySetting = Setting.OFF;
-		} else if (mySetting == Setting.MEDIUM) {
-			mySetting = Setting.LOW;
-		} else if (mySetting == Setting.HIGH) {
-			mySetting = Setting.MEDIUM;
-		}*/
-		
+		// Switch statement to decrease temperature when the minus button is activated 
 		switch (mySetting) {
 			case OFF: mySetting = Setting.OFF;
 				break;
@@ -73,13 +67,12 @@ public class Burner {
 		} else if (mySetting == Setting.HIGH) {
 			myTemperature = Temperature.valueOf("BLAZING");
 		}
+		if(timer == 0) timer = TIME_DURATION;
 		timer--;
-		if(timer == 0) {
-			
-		}
 	}
 	
 	public boolean redHot() {
+		// Test if a burner is Blazing to output warning
 		if (myTemperature == Temperature.valueOf("BLAZING")) {
 			return true;
 		} else {
@@ -88,6 +81,7 @@ public class Burner {
 	}
 	
 	public void display() {
+		// Test what temperature it is currently and output information to the Standard output
 		if (myTemperature == Temperature.valueOf("COLD")) {
 			System.out.println("[---].....cooool");
 		} else if (myTemperature == Temperature.valueOf("WARM")) {

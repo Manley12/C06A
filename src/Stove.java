@@ -10,6 +10,16 @@ import java.util.ArrayList;
  * 
  * Purpose: Simulates a stove
  */
+
+/*
+ * 
+ * Setting ENUM 
+ *  
+ * @author Justin Orji
+ * @author Gregory Manley
+ * 
+ * As modified
+ */
 public class Stove {
 	// Our stove will have 4 burners
 	public final static int NUM_BURNERS = 4;
@@ -32,15 +42,20 @@ public class Stove {
 	 **** You must write the following method ****
 	 */
 	public void displayStove() {
+		// Set the redHotTest to false to prevent any holdovers
 		boolean redHotTest = false;
 		
+		// Iterate over every burner and run the display function
 		for (int i = 0; i < NUM_BURNERS; i++) {
 			burners.get(i).display();
+			
+			// If a single burner is redHot set true;
 			if (burners.get(i).redHot() == true) {
 				redHotTest = true;
 			}
 		}
 		
+		// If a single burner is redHot display warning message
 		if (redHotTest == true) {
 			System.out.println("RED LIGHT - HOT BURNER ALERT");
 		}
