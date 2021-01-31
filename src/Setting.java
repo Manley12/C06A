@@ -9,7 +9,7 @@ public enum Setting {
 	
 	@Override
 	public String toString() {
-		return ;
+		return Setting.valueOf(input).name();
 	}
 	
 }
